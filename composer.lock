@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8351fd3efaa736becce779bde8b1829e",
+    "content-hash": "3becd754a7f18d221ff5e1c02bf16a46",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -482,16 +482,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v6.0.2",
+            "version": "v6.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d9b24caa67eacd22d917a5fd3b3601937112a329"
+                "reference": "56789e9dec750e0fbe8e9e6ae90a01a4e6887902"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d9b24caa67eacd22d917a5fd3b3601937112a329",
-                "reference": "d9b24caa67eacd22d917a5fd3b3601937112a329",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/56789e9dec750e0fbe8e9e6ae90a01a4e6887902",
+                "reference": "56789e9dec750e0fbe8e9e6ae90a01a4e6887902",
                 "shasum": ""
             },
             "require": {
@@ -623,7 +623,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-09-10T14:47:28+00:00"
+            "time": "2019-09-10T18:46:24+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1331,16 +1331,16 @@
         },
         {
             "name": "simplesquid/vend-sdk",
-            "version": "v0.1.3",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesquid/vend-sdk.git",
-                "reference": "03a7b021c5b25b2a7fe7ac82a024d6e8dd268894"
+                "reference": "b131ed67e6cdd1555bd8f32b687a37ed57191539"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesquid/vend-sdk/zipball/03a7b021c5b25b2a7fe7ac82a024d6e8dd268894",
-                "reference": "03a7b021c5b25b2a7fe7ac82a024d6e8dd268894",
+                "url": "https://api.github.com/repos/simplesquid/vend-sdk/zipball/b131ed67e6cdd1555bd8f32b687a37ed57191539",
+                "reference": "b131ed67e6cdd1555bd8f32b687a37ed57191539",
                 "shasum": ""
             },
             "require": {
@@ -1369,15 +1369,18 @@
             "authors": [
                 {
                     "name": "Matthew Poulter",
-                    "email": "matthew.poulter@simplesquid.co.za"
+                    "email": "matthew.poulter@simplesquid.co.za",
+                    "role": "Developer"
                 }
             ],
             "description": "An unoffical PHP SDK for Vend POS",
             "keywords": [
+                "php",
+                "point-of-sale",
                 "sdk",
                 "vend"
             ],
-            "time": "2019-09-14T07:44:53+00:00"
+            "time": "2019-09-14T15:02:29+00:00"
         },
         {
             "name": "spatie/data-transfer-object",
