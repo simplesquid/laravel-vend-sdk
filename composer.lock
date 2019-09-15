@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3becd754a7f18d221ff5e1c02bf16a46",
+    "content-hash": "70454b854b038e04c66d7f29f93b4a9e",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1331,16 +1331,16 @@
         },
         {
             "name": "simplesquid/vend-sdk",
-            "version": "v0.2.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesquid/vend-sdk.git",
-                "reference": "b131ed67e6cdd1555bd8f32b687a37ed57191539"
+                "reference": "076f9509a8a1973f3fe56ff56374997440e745bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesquid/vend-sdk/zipball/b131ed67e6cdd1555bd8f32b687a37ed57191539",
-                "reference": "b131ed67e6cdd1555bd8f32b687a37ed57191539",
+                "url": "https://api.github.com/repos/simplesquid/vend-sdk/zipball/076f9509a8a1973f3fe56ff56374997440e745bf",
+                "reference": "076f9509a8a1973f3fe56ff56374997440e745bf",
                 "shasum": ""
             },
             "require": {
@@ -1380,7 +1380,7 @@
                 "sdk",
                 "vend"
             ],
-            "time": "2019-09-14T15:02:29+00:00"
+            "time": "2019-09-15T19:51:47+00:00"
         },
         {
             "name": "spatie/data-transfer-object",
@@ -3226,16 +3226,16 @@
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v4.0.1",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "39aa19cb23fde3a156217587802acf37b1726d16"
+                "reference": "0091a0f1b6493fa445379c58c4d0b757ea4ee2ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/39aa19cb23fde3a156217587802acf37b1726d16",
-                "reference": "39aa19cb23fde3a156217587802acf37b1726d16",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/0091a0f1b6493fa445379c58c4d0b757ea4ee2ee",
+                "reference": "0091a0f1b6493fa445379c58c4d0b757ea4ee2ee",
                 "shasum": ""
             },
             "require": {
@@ -3287,7 +3287,7 @@
                 "orchestral",
                 "testing"
             ],
-            "time": "2019-09-11T07:31:59+00:00"
+            "time": "2019-09-15T08:17:06+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -4647,7 +4647,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "simplesquid/vend-sdk": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

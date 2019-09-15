@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      * The driver to use to interact with Vend API.
      * You may use "log" or "null" to prevent calling the
@@ -18,25 +17,52 @@ return [
     /*
      * The authentication method to be used.
      * Can be "personal" for a personal access token
-     * or "oauth2" for OAUTH 2.0 authentication.
+     * or "oauth" for OAUTH 2.0 authentication.
      */
-    'authorisation' => env('VEND_AUTHORISATION', 'oauth2'),
+    'authorisation' => env('VEND_AUTHORISATION', 'oauth'),
 
     /*
      * Fields required for authentication using a
      * personal access token.
      */
-    'personal' => [
+    'personal'      => [
+        /*
+         * Vend domain prefix.
+         */
         'domain_prefix' => env('VEND_DOMAIN_PREFIX', ''),
+
+        /*
+         * Vend personal access token.
+         */
         'access_token'  => env('VEND_ACCESS_TOKEN', ''),
     ],
 
     /*
-     * Fields required for authentication using OAUTH 2.0.
+     * Fields required for authentication using OAuth 2.0.
      */
-    'oauth2' => [
+    'oauth'         => [
+        /*
+         * Vend API Client ID.
+         */
         'client_id'     => env('VEND_CLIENT_ID', ''),
+
+        /*
+         * Vend API Client Secret.
+         */
         'client_secret' => env('VEND_CLIENT_SECRET', ''),
-        'redirect_uri'  => env('VEND_REDIRECT_URI', ''),
+
+        /*
+         * Replace with your own token manage class which
+         * implements \SimpleSquid\LaravelVend\VendTokenManager.
+         */
+        'token_manager' => \SimpleSquid\LaravelVend\VendTokenManager::class,
+    ],
+
+    /*
+     * Model observers to register.
+     * e.g. Product::class => VendProductObserver::class,
+     */
+    'observers'     => [
+        //
     ],
 ];
