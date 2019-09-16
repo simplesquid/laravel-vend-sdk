@@ -49,16 +49,17 @@ class VendRequestJob implements ShouldQueue
     }
 
     /**
-     * Get the display name for the queued job.
+     * Dispatch a command to its appropriate handler in the current process.
      *
-     * @return string
-     * @throws \ReflectionException
+     * @return mixed
      */
-    public function displayName()
+    public static function dispatchNow()
     {
-        $reflection = new ReflectionFunction($this->closure->getClosure());
+        $job = new static(...func_get_args());
 
-        return 'VendRequest (' . basename($reflection->getFileName()) . ':' . $reflection->getStartLine() . ')';
+        log(app(Dispatcher::class)->dispatchNow($job));
+
+        return $job->getResponse();
     }
 
     /**
@@ -69,6 +70,19 @@ class VendRequestJob implements ShouldQueue
     public function getResponse()
     {
         return $this->response;
+    }
+
+    /**
+     * Get the display name for the queued job.
+     *
+     * @return string
+     * @throws \ReflectionException
+     */
+    public function displayName()
+    {
+        $reflection = new ReflectionFunction($this->closure->getClosure());
+
+        return 'VendRequest (' . basename($reflection->getFileName()) . ':' . $reflection->getStartLine() . ')';
     }
 
     /**
@@ -113,19 +127,5 @@ class VendRequestJob implements ShouldQueue
     public function retryUntil()
     {
         return now()->addSeconds(config('vend.queue_timeout', 5));
-    }
-
-    /**
-     * Dispatch a command to its appropriate handler in the current process.
-     *
-     * @return mixed
-     */
-    public static function dispatchNow()
-    {
-        $job = new static(...func_get_args());
-
-        log(app(Dispatcher::class)->dispatchNow($job));
-
-        return $job->getResponse();
     }
 }
