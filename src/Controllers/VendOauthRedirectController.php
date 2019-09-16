@@ -21,7 +21,6 @@ class VendOauthRedirectController
                          ->oAuthAuthorisationCode($request->code);
 
             $tokenManager->setToken($token);
-            $tokenManager->setDomainPrefix($request->domain_prefix);
         } catch (Throwable $e) {
             abort(Response::HTTP_BAD_REQUEST);
         }

@@ -78,8 +78,7 @@ class VendServiceProvider extends ServiceProvider
                 $tokenManager = $this->app->make(VendTokenManager::class);
 
                 if ($tokenManager->hasToken()) {
-                    $vend->domainPrefix($tokenManager->getDomainPrefix())
-                         ->authorisationToken($tokenManager->getToken());
+                    $vend->authorisationToken($tokenManager->getToken());
                 }
             }
 
