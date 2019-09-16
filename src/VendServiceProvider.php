@@ -45,7 +45,8 @@ class VendServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/vend.php', 'vend');
 
-        throw_if(!is_subclass_of(config('vend.oauth.token_manager'), VendTokenManager::class), TokenManagerException::class);
+        throw_if(config('vend.oauth.token_manager') !== VendTokenManager::class &&
+                 !is_subclass_of(config('vend.oauth.token_manager'), VendTokenManager::class), TokenManagerException::class);
 
         $this->app->bind(VendTokenManager::class, config('vend.oauth.token_manager'));
 

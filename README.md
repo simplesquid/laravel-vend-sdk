@@ -31,10 +31,13 @@ An example use case is shown below. The `VendRequestJob` handles both rate limit
 use SimpleSquid\LaravelVend\Facades\Vend;
 use SimpleSquid\LaravelVend\Jobs\VendRequestJob;
 
+/* Get the list of products. */
 $products = VendRequestJob::dispatchNow(function () {
     return Vend::product()->get();
 });
+$products->getResponse();
 
+/* Create a new product. */
 VendRequestJob::dispatch(function () use $newProduct {
     return Vend::product()->create($newProduct);
 });
