@@ -4,10 +4,13 @@ namespace SimpleSquid\LaravelVend\Jobs;
 
 use Closure;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializableClosure;
 use Illuminate\Queue\SerializesModels;
+use ReflectionFunction;
 use SimpleSquid\LaravelVend\Facades\Vend;
 use SimpleSquid\LaravelVend\VendTokenManager;
 use SimpleSquid\Vend\Exceptions\RateLimitException;
@@ -19,7 +22,11 @@ class VendRequestJob implements ShouldQueue
 
     private $response;
 
-    /** @var Closure */
+    /**
+     * The serializable Closure instance.
+     *
+     * @var \Illuminate\Queue\SerializableClosure
+     */
     private $closure;
 
     /**
@@ -30,35 +37,38 @@ class VendRequestJob implements ShouldQueue
     public $deleteWhenMissingModels = true;
 
     /**
+     * Create a new job instance.
+     *
      * @param  \Closure  $closure
      */
     public function __construct(Closure $closure)
     {
-        $this->closure = $closure;
+        $this->closure = new SerializableClosure($closure);
     }
 
     /**
      * Execute the job.
      *
+     * @param  \Illuminate\Contracts\Container\Container  $container
      * @param  \SimpleSquid\LaravelVend\VendTokenManager  $tokenManager
      *
      * @return void
      */
-    public function handle(VendTokenManager $tokenManager)
+    public function handle(Container $container, VendTokenManager $tokenManager)
     {
         try {
-            $this->response = ($this->closure)();
+            $this->response = $container->call($this->closure->getClosure());
         } catch (TokenExpiredException $e) {
             $tokenManager->setToken(Vend::refreshOAuthAuthorisationToken());
 
             if (is_null($this->job)) {
-                $this->response = ($this->closure)();
+                $this->response = $container->call($this->closure->getClosure());
             }
 
             $this->release();
         } catch (RateLimitException $e) {
             if (is_null($this->job)) {
-                $this->response = ($this->closure)();
+                $this->response = $container->call($this->closure->getClosure());
             }
 
             $this->release(now()->diffInSeconds($e->response()->retry_after));
@@ -72,7 +82,7 @@ class VendRequestJob implements ShouldQueue
      */
     public function retryUntil()
     {
-        return now()->addSeconds(5);
+        return now()->addSeconds(config('vend.queue_timeout', 5));
     }
 
     /**
@@ -83,5 +93,18 @@ class VendRequestJob implements ShouldQueue
     public function getResponse()
     {
         return $this->response;
+    }
+
+    /**
+     * Get the display name for the queued job.
+     *
+     * @return string
+     * @throws \ReflectionException
+     */
+    public function displayName()
+    {
+        $reflection = new ReflectionFunction($this->closure->getClosure());
+
+        return 'VendRequest (' . basename($reflection->getFileName()) . ':' . $reflection->getStartLine() . ')';
     }
 }
