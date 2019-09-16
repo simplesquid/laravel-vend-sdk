@@ -23,6 +23,14 @@ To publish the config file to `config/vend.php` run:
 php artisan vendor:publish --provider="SimpleSquid\LaravelVend\VendServiceProvider"
 ```
 
+## OAuth Authorisation
+
+Should you wish to make use of the OAuth authorisation method, you will need to register your application on the [Vend Developer page](https://developers.vendhq.com/) and set the redirect URI to the value of `route('vend.oauth.request')`.
+
+You will then need to copy the client ID and secret to your environment variables. You will also need to create an implementation of `\SimpleSquid\LaravelVend\VendTokenManager` to store and retrieve the access token (it is recommended to be saved in your database).
+
+Finally, direct your user to `route('vend.oauth.request')` in order to request access. The access token will be saved upon the user's successful return to your application, and they will be redirected to the previous page.
+
 ## Usage
 
 An example use case is shown below. The `VendRequestJob` handles both rate limiting and refreshes of the OAuth token.
