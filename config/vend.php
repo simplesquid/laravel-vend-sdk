@@ -59,6 +59,12 @@ return [
     ],
 
     /*
+     * The number of seconds before a queued request job
+     * should timeout.
+     */
+    'queue_timeout' => env('VEND_QUEUE_TIMEOUT', 5),
+
+    /*
      * Model observers to register.
      * e.g. Product::class => VendProductObserver::class,
      */

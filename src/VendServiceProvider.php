@@ -46,6 +46,7 @@ class VendServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/vend.php', 'vend');
 
         throw_if(!is_subclass_of(config('vend.oauth.token_manager'), VendTokenManager::class), TokenManagerException::class);
+
         $this->app->bind(VendTokenManager::class, config('vend.oauth.token_manager'));
 
         $this->app->singleton(Vend::class, function () {
@@ -56,6 +57,7 @@ class VendServiceProvider extends ServiceProvider
             }
 
             $vend = Vend::getInstance();
+
             $vend->userAgent(config('vend.user_agent', 'Laravel Vend SDK'));
 
             $auth = config('vend.authorisation', 'personal');
