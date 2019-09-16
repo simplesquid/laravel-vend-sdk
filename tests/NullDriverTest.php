@@ -9,18 +9,13 @@ use SimpleSquid\LaravelVend\NullDriver;
 
 class NullDriverTest extends TestCase
 {
-    public function tearDown(): void
-    {
-        Mockery::close();
-    }
-
     /** @test */
     public function it_can_call_with_any_method_or_field()
     {
         $vend = new NullDriver();
 
         $this->assertNull($vend->whatever());
-        $this->assertNull($vend->product->all());
+        $this->assertNull($vend->product->get());
         $this->assertNull($vend->product->create(['product_name' => 'A Product', 'sku' => '12345']));
     }
 
@@ -42,5 +37,10 @@ class NullDriverTest extends TestCase
             'Called Vend facade method `product->create()` with:',
             [['product_name' => 'A Product', 'sku' => '12345']]
         ]);
+    }
+
+    public function tearDown(): void
+    {
+        Mockery::close();
     }
 }

@@ -3,11 +3,34 @@
 namespace SimpleSquid\LaravelVend\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use SimpleSquid\Vend\Actions\BrandsManager;
+use SimpleSquid\Vend\Actions\ChannelRequestLogManager;
+use SimpleSquid\Vend\Actions\ConsignmentsManager;
+use SimpleSquid\Vend\Actions\CustomerGroupsManager;
+use SimpleSquid\Vend\Actions\CustomersManager;
+use SimpleSquid\Vend\Actions\InventoryManager;
+use SimpleSquid\Vend\Actions\OutletProductTaxesManager;
+use SimpleSquid\Vend\Actions\OutletsManager;
+use SimpleSquid\Vend\Actions\PaymentTypesManager;
+use SimpleSquid\Vend\Actions\PriceBookProductsManager;
+use SimpleSquid\Vend\Actions\PriceBooksManager;
+use SimpleSquid\Vend\Actions\ProductImagesManager;
+use SimpleSquid\Vend\Actions\ProductsManager;
+use SimpleSquid\Vend\Actions\ProductTypesManager;
+use SimpleSquid\Vend\Actions\RegistersManager;
+use SimpleSquid\Vend\Actions\SalesManager;
+use SimpleSquid\Vend\Actions\SearchManager;
+use SimpleSquid\Vend\Actions\SuppliersManager;
+use SimpleSquid\Vend\Actions\TagsManager;
+use SimpleSquid\Vend\Actions\TaxesManager;
+use SimpleSquid\Vend\Actions\UsersManager;
+use SimpleSquid\Vend\Actions\WebhookManager;
+use SimpleSquid\Vend\Resources\OneDotZero\Token;
 
 /**
  * @method static string getAuthorisationUrl(string $previous_url)
- * @method static \SimpleSquid\Vend\Resources\OneDotZero\Token oAuthAuthorisationCode(string $code)
- * @method static \SimpleSquid\Vend\Resources\OneDotZero\Token refreshOAuthAuthorisationToken()
+ * @method static Token oAuthAuthorisationCode(string $code)
+ * @method static Token refreshOAuthAuthorisationToken()
  * @method static \SimpleSquid\Vend\Vend domainPrefix(string $domain_prefix)
  * @method static \SimpleSquid\Vend\Vend clientId(string $client_id)
  * @method static \SimpleSquid\Vend\Vend clientSecret(string $client_secret)
@@ -16,29 +39,29 @@ use Illuminate\Support\Facades\Facade;
  * @method static \SimpleSquid\Vend\Vend confirmationTimeout(int $confirmation_timeout)
  * @method static \SimpleSquid\Vend\Vend requestTimeout(int $request_timeout)
  * @method static \SimpleSquid\Vend\Vend userAgent(string $user_agent)
- * @method static \SimpleSquid\Vend\Vend authorisationToken(\SimpleSquid\Vend\Resources\OneDotZero\Token $token)
- * @method static \SimpleSquid\Vend\Actions\BrandsManager brand()
- * @method static \SimpleSquid\Vend\Actions\ChannelRequestLogManager channelRequestLog()
- * @method static \SimpleSquid\Vend\Actions\ConsignmentsManager consignment()
- * @method static \SimpleSquid\Vend\Actions\CustomersManager customer()
- * @method static \SimpleSquid\Vend\Actions\CustomerGroupsManager customerGroup()
- * @method static \SimpleSquid\Vend\Actions\InventoryManager inventory()
- * @method static \SimpleSquid\Vend\Actions\OutletsManager outlet()
- * @method static \SimpleSquid\Vend\Actions\OutletProductTaxesManager outletProductTax()
- * @method static \SimpleSquid\Vend\Actions\PaymentTypesManager paymentType()
- * @method static \SimpleSquid\Vend\Actions\PriceBooksManager priceBook()
- * @method static \SimpleSquid\Vend\Actions\PriceBookProductsManager priceBookProduct()
- * @method static \SimpleSquid\Vend\Actions\ProductsManager product()
- * @method static \SimpleSquid\Vend\Actions\ProductImagesManager productImage()
- * @method static \SimpleSquid\Vend\Actions\ProductTypesManager productType()
- * @method static \SimpleSquid\Vend\Actions\RegistersManager register()
- * @method static \SimpleSquid\Vend\Actions\SalesManager sale()
- * @method static \SimpleSquid\Vend\Actions\SearchManager search()
- * @method static \SimpleSquid\Vend\Actions\SuppliersManager supplier()
- * @method static \SimpleSquid\Vend\Actions\TagsManager tag()
- * @method static \SimpleSquid\Vend\Actions\TaxesManager tax()
- * @method static \SimpleSquid\Vend\Actions\UsersManager user()
- * @method static \SimpleSquid\Vend\Actions\WebhookManager webhook()
+ * @method static \SimpleSquid\Vend\Vend authorisationToken(Token $token)
+ * @method static BrandsManager brand()
+ * @method static ChannelRequestLogManager channelRequestLog()
+ * @method static ConsignmentsManager consignment()
+ * @method static CustomersManager customer()
+ * @method static CustomerGroupsManager customerGroup()
+ * @method static InventoryManager inventory()
+ * @method static OutletsManager outlet()
+ * @method static OutletProductTaxesManager outletProductTax()
+ * @method static PaymentTypesManager paymentType()
+ * @method static PriceBooksManager priceBook()
+ * @method static PriceBookProductsManager priceBookProduct()
+ * @method static ProductsManager product()
+ * @method static ProductImagesManager productImage()
+ * @method static ProductTypesManager productType()
+ * @method static RegistersManager register()
+ * @method static SalesManager sale()
+ * @method static SearchManager search()
+ * @method static SuppliersManager supplier()
+ * @method static TagsManager tag()
+ * @method static TaxesManager tax()
+ * @method static UsersManager user()
+ * @method static WebhookManager webhook()
  *
  * @see \SimpleSquid\Vend\Vend
  */
