@@ -3,6 +3,7 @@
 namespace SimpleSquid\LaravelVend\Jobs;
 
 use Closure;
+use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -76,12 +77,17 @@ class VendRequestJob implements ShouldQueue
      * @param  \SimpleSquid\LaravelVend\VendTokenManager  $tokenManager
      *
      * @return void
+     * @throws Exception
      */
     public function handle(Container $container, VendTokenManager $tokenManager)
     {
         try {
             $this->response = $container->call($this->closure->getClosure());
         } catch (TokenExpiredException $e) {
+            if (config('vend.authorisation', 'oauth') !== 'oauth') {
+                throw $e;
+            }
+
             $tokenManager->setToken(Vend::refreshOAuthAuthorisationToken());
 
             if (is_null($this->job)) {

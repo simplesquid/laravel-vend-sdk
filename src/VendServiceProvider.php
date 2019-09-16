@@ -62,7 +62,7 @@ class VendServiceProvider extends ServiceProvider
                  ->requestTimeout(config('vend.request_timeout', 2))
                  ->confirmationTimeout(config('vend.confirmation_timeout', 30));
 
-            $auth = config('vend.authorisation', 'personal');
+            $auth = config('vend.authorisation', 'oauth');
 
             if ($auth === 'personal') {
                 $vend->domainPrefix(config('vend.personal.domain_prefix'))
