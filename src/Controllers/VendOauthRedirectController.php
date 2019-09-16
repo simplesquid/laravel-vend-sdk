@@ -13,7 +13,7 @@ use Throwable;
 
 class VendOauthRedirectController
 {
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request, VendTokenManager $tokenManager): Response
     {
         abort_if($request->has('error') ||
                  !$request->has(['domain_prefix', 'code', 'state']),
@@ -23,7 +23,6 @@ class VendOauthRedirectController
             $token = Vend::domainPrefix($request->domain_prefix)
                          ->oAuthAuthorisationCode($request->code);
 
-            $tokenManager = app(VendTokenManager::class);
             $tokenManager->setToken($token);
             $tokenManager->setDomainPrefix($request->domain_prefix);
         } catch (Throwable $e) {
