@@ -5,7 +5,6 @@ namespace SimpleSquid\LaravelVend\Jobs;
 use Closure;
 use Exception;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -36,8 +35,6 @@ class VendRequestJob implements ShouldQueue
      */
     public $deleteWhenMissingModels = true;
 
-    private $response;
-
     /**
      * Create a new job instance.
      *
@@ -46,30 +43,6 @@ class VendRequestJob implements ShouldQueue
     public function __construct(Closure $closure)
     {
         $this->closure = new SerializableClosure($closure);
-    }
-
-    /**
-     * Dispatch a command to its appropriate handler in the current process.
-     *
-     * @return mixed
-     */
-    public static function dispatchNow()
-    {
-        $job = new static(...func_get_args());
-
-        log(app(Dispatcher::class)->dispatchNow($job));
-
-        return $job->getResponse();
-    }
-
-    /**
-     * Get the response from the synchronous job.
-     *
-     * @return mixed
-     */
-    public function getResponse()
-    {
-        return $this->response;
     }
 
     /**
@@ -97,7 +70,7 @@ class VendRequestJob implements ShouldQueue
     public function handle(Container $container, VendTokenManager $tokenManager)
     {
         try {
-            return $this->response = $container->call($this->closure->getClosure());
+            return $container->call($this->closure->getClosure());
         } catch (TokenExpiredException $e) {
             if (config('vend.authorisation', 'oauth') !== 'oauth') {
                 throw $e;
@@ -106,13 +79,13 @@ class VendRequestJob implements ShouldQueue
             $tokenManager->setToken(Vend::refreshOAuthAuthorisationToken());
 
             if (is_null($this->job)) {
-                return $this->response = $container->call($this->closure->getClosure());
+                return $container->call($this->closure->getClosure());
             }
 
             $this->release();
         } catch (RateLimitException $e) {
             if (is_null($this->job)) {
-                return $this->response = $container->call($this->closure->getClosure());
+                return $container->call($this->closure->getClosure());
             }
 
             $this->release(now()->diffInSeconds($e->response()->retry_after));

@@ -7,6 +7,13 @@ use SimpleSquid\Vend\Resources\OneDotZero\Token;
 interface VendTokenManager
 {
     /**
+     * Destroys the saved Token.
+     *
+     * @return void
+     */
+    public function destroyToken(): void;
+
+    /**
      * Retrieves the Token.
      *
      * @return \SimpleSquid\Vend\Resources\OneDotZero\Token
