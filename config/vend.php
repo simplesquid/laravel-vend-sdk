@@ -6,26 +6,26 @@ return [
      * You may use "log" or "null" to prevent calling the
      * API directly from your environment.
      */
-    'driver'        => env('VEND_DRIVER', 'api'),
+    'driver'               => env('VEND_DRIVER', 'api'),
 
     /*
      * The user agent to be used when interacting with
      * the Vend API.
      */
-    'user_agent'    => env('VEND_USER_AGENT', 'Laravel Vend SDK'),
+    'user_agent'           => env('VEND_USER_AGENT', 'Laravel Vend SDK'),
 
     /*
      * The authentication method to be used.
      * Can be "personal" for a personal access token
      * or "oauth" for OAUTH 2.0 authentication.
      */
-    'authorisation' => env('VEND_AUTHORISATION', 'oauth'),
+    'authorisation'        => env('VEND_AUTHORISATION', 'oauth'),
 
     /*
      * Fields required for authentication using a
      * personal access token.
      */
-    'personal'      => [
+    'personal'             => [
         /*
          * Vend domain prefix.
          */
@@ -40,7 +40,7 @@ return [
     /*
      * Fields required for authentication using OAuth 2.0.
      */
-    'oauth'         => [
+    'oauth'                => [
         /*
          * Vend API Client ID.
          */
@@ -62,13 +62,25 @@ return [
      * The number of seconds before a queued request job
      * should timeout.
      */
-    'queue_timeout' => env('VEND_QUEUE_TIMEOUT', 5),
+    'queue_timeout'        => env('VEND_QUEUE_TIMEOUT', 5),
+
+    /*
+     * The number of seconds before an individual request
+     * should timeout.
+     */
+    'request_timeout'      => env('VEND_REQUEST_TIMEOUT', 2),
+
+    /*
+     * The number of seconds before a confirmation check
+     * should timeout.
+     */
+    'confirmation_timeout' => env('VEND_CONFIRMATION_TIMEOUT', 30),
 
     /*
      * Model observers to register.
      * e.g. Product::class => VendProductObserver::class,
      */
-    'observers'     => [
+    'observers'            => [
         //
     ],
 ];
