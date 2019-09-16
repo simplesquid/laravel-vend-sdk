@@ -7,13 +7,6 @@ use SimpleSquid\Vend\Resources\OneDotZero\Token;
 interface VendTokenManager
 {
     /**
-     * Retrieves the Domain Prefix.
-     *
-     * @return string
-     */
-    public function getDomainPrefix(): string;
-
-    /**
      * Retrieves the Token.
      *
      * @return \SimpleSquid\Vend\Resources\OneDotZero\Token
@@ -26,13 +19,6 @@ interface VendTokenManager
      * @return bool
      */
     public function hasToken(): bool;
-
-    /**
-     * Saves the Domain Prefix.
-     *
-     * @param  string  $domain_prefix
-     */
-    public function setDomainPrefix(string $domain_prefix): void;
 
     /**
      * Saves the Token.

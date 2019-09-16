@@ -32,15 +32,18 @@ use SimpleSquid\LaravelVend\Facades\Vend;
 use SimpleSquid\LaravelVend\Jobs\VendRequestJob;
 
 /* Get the list of products. */
-$products = VendRequestJob::dispatchNow(function () {
-    return Vend::product()->get();
-});
-$products->getResponse();
+public function getProducts() {
+    return VendRequestJob::dispatchNow(function () {
+        return Vend::product()->get();
+    });
+}
 
 /* Create a new product. */
-VendRequestJob::dispatch(function () use $newProduct {
-    return Vend::product()->create($newProduct);
-});
+public function createProduct($product) {
+    VendRequestJob::dispatch(function () use $product {
+        return Vend::product()->create($product);
+    });
+}
 ```
 
 For more examples, feel free to dive into the code.
