@@ -58,7 +58,9 @@ class VendServiceProvider extends ServiceProvider
 
             $vend = Vend::getInstance();
 
-            $vend->userAgent(config('vend.user_agent', 'Laravel Vend SDK'));
+            $vend->userAgent(config('vend.user_agent', 'Laravel Vend SDK'))
+                 ->requestTimeout(config('vend.request_timeout', 2))
+                 ->confirmationTimeout(config('vend.confirmation_timeout', 30));
 
             $auth = config('vend.authorisation', 'personal');
 
