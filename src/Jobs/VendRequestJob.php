@@ -20,8 +20,6 @@ class VendRequestJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private $response;
-
     /**
      * The serializable Closure instance.
      *
@@ -36,6 +34,8 @@ class VendRequestJob implements ShouldQueue
      */
     public $deleteWhenMissingModels = true;
 
+    private $response;
+
     /**
      * Create a new job instance.
      *
@@ -44,6 +44,29 @@ class VendRequestJob implements ShouldQueue
     public function __construct(Closure $closure)
     {
         $this->closure = new SerializableClosure($closure);
+    }
+
+    /**
+     * Get the display name for the queued job.
+     *
+     * @return string
+     * @throws \ReflectionException
+     */
+    public function displayName()
+    {
+        $reflection = new ReflectionFunction($this->closure->getClosure());
+
+        return 'VendRequest (' . basename($reflection->getFileName()) . ':' . $reflection->getStartLine() . ')';
+    }
+
+    /**
+     * Get the response from the synchronous job.
+     *
+     * @return mixed
+     */
+    public function getResponse()
+    {
+        return $this->response;
     }
 
     /**
@@ -83,28 +106,5 @@ class VendRequestJob implements ShouldQueue
     public function retryUntil()
     {
         return now()->addSeconds(config('vend.queue_timeout', 5));
-    }
-
-    /**
-     * Get the response from the synchronous job.
-     *
-     * @return mixed
-     */
-    public function getResponse()
-    {
-        return $this->response;
-    }
-
-    /**
-     * Get the display name for the queued job.
-     *
-     * @return string
-     * @throws \ReflectionException
-     */
-    public function displayName()
-    {
-        $reflection = new ReflectionFunction($this->closure->getClosure());
-
-        return 'VendRequest (' . basename($reflection->getFileName()) . ':' . $reflection->getStartLine() . ')';
     }
 }

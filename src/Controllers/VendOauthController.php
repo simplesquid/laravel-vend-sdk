@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright (c) 2019 Matthew Poulter. All rights reserved.
- */
 
 namespace SimpleSquid\LaravelVend\Controllers;
 
