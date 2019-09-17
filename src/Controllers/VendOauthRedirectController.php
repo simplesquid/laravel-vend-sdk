@@ -16,6 +16,10 @@ class VendOauthRedirectController
                  !$request->has(['domain_prefix', 'code', 'state']),
                  Response::HTTP_UNAUTHORIZED);
 
+        if ($tokenManager->hasToken()) {
+            return redirect($request->state, Response::HTTP_SEE_OTHER);
+        }
+
         try {
             $token = Vend::domainPrefix($request->domain_prefix)
                          ->oAuthAuthorisationCode($request->code);
