@@ -1335,12 +1335,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesquid/vend-sdk.git",
-                "reference": "2a1c51d183bfd144d31bb8e16b0841f4476b110f"
+                "reference": "d35919645b47bc062a78a24535957016fda31917"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesquid/vend-sdk/zipball/2a1c51d183bfd144d31bb8e16b0841f4476b110f",
-                "reference": "2a1c51d183bfd144d31bb8e16b0841f4476b110f",
+                "url": "https://api.github.com/repos/simplesquid/vend-sdk/zipball/d35919645b47bc062a78a24535957016fda31917",
+                "reference": "d35919645b47bc062a78a24535957016fda31917",
                 "shasum": ""
             },
             "require": {
@@ -1380,7 +1380,7 @@
                 "sdk",
                 "vend"
             ],
-            "time": "2019-09-16T21:18:43+00:00"
+            "time": "2019-09-16T21:25:12+00:00"
         },
         {
             "name": "spatie/data-transfer-object",

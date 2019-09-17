@@ -11,7 +11,7 @@ class VendOauthController
     public function __invoke(VendTokenManager $tokenManager): Response
     {
         if ($tokenManager->hasToken()) {
-            return redirect(url()->previous());
+            return redirect(url()->previous(), Response::HTTP_SEE_OTHER);
         }
 
         return redirect(Vend::getAuthorisationUrl(url()->previous()), Response::HTTP_SEE_OTHER);
