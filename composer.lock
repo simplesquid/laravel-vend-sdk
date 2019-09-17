@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "70454b854b038e04c66d7f29f93b4a9e",
+    "content-hash": "553e57fe56e7e3575940d12be66fea17",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1331,16 +1331,16 @@
         },
         {
             "name": "simplesquid/vend-sdk",
-            "version": "dev-master",
+            "version": "v0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesquid/vend-sdk.git",
-                "reference": "d35919645b47bc062a78a24535957016fda31917"
+                "reference": "fd533fd5a9dff63ea4ad9f8765311e65c3fc2d9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesquid/vend-sdk/zipball/d35919645b47bc062a78a24535957016fda31917",
-                "reference": "d35919645b47bc062a78a24535957016fda31917",
+                "url": "https://api.github.com/repos/simplesquid/vend-sdk/zipball/fd533fd5a9dff63ea4ad9f8765311e65c3fc2d9f",
+                "reference": "fd533fd5a9dff63ea4ad9f8765311e65c3fc2d9f",
                 "shasum": ""
             },
             "require": {
@@ -1380,7 +1380,7 @@
                 "sdk",
                 "vend"
             ],
-            "time": "2019-09-16T21:25:12+00:00"
+            "time": "2019-09-17T10:14:59+00:00"
         },
         {
             "name": "spatie/data-transfer-object",
@@ -3606,16 +3606,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "7.0.7",
+            "version": "7.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "7743bbcfff2a907e9ee4a25be13d0f8ec5e73800"
+                "reference": "aa0d179a13284c7420fc281fc32750e6cc7c9e2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/7743bbcfff2a907e9ee4a25be13d0f8ec5e73800",
-                "reference": "7743bbcfff2a907e9ee4a25be13d0f8ec5e73800",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/aa0d179a13284c7420fc281fc32750e6cc7c9e2f",
+                "reference": "aa0d179a13284c7420fc281fc32750e6cc7c9e2f",
                 "shasum": ""
             },
             "require": {
@@ -3624,7 +3624,7 @@
                 "php": "^7.2",
                 "phpunit/php-file-iterator": "^2.0.2",
                 "phpunit/php-text-template": "^1.2.1",
-                "phpunit/php-token-stream": "^3.1.0",
+                "phpunit/php-token-stream": "^3.1.1",
                 "sebastian/code-unit-reverse-lookup": "^1.0.1",
                 "sebastian/environment": "^4.2.2",
                 "sebastian/version": "^2.0.1",
@@ -3665,7 +3665,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-07-25T05:31:54+00:00"
+            "time": "2019-09-17T06:24:36+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -3809,16 +3809,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "e899757bb3df5ff6e95089132f32cd59aac2220a"
+                "reference": "995192df77f63a59e47f025390d2d1fdf8f425ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/e899757bb3df5ff6e95089132f32cd59aac2220a",
-                "reference": "e899757bb3df5ff6e95089132f32cd59aac2220a",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/995192df77f63a59e47f025390d2d1fdf8f425ff",
+                "reference": "995192df77f63a59e47f025390d2d1fdf8f425ff",
                 "shasum": ""
             },
             "require": {
@@ -3854,7 +3854,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2019-07-25T05:29:42+00:00"
+            "time": "2019-09-17T06:23:10+00:00"
         },
         {
             "name": "phpunit/phpunit",
@@ -4647,9 +4647,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "simplesquid/vend-sdk": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
