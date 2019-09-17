@@ -20,7 +20,7 @@
   "require": {
     "php": "^7.2",
     "illuminate/support": "~5.8.0|~6.0.0",
-    "simplesquid/vend-sdk": "dev-master"
+    "simplesquid/vend-sdk": "^0.3"
   },
   "require-dev": {
     "mockery/mockery": "^1.0",
