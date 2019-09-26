@@ -2,17 +2,16 @@
 
 namespace SimpleSquid\LaravelVend\Controllers;
 
-use SimpleSquid\LaravelVend\Facades\Vend;
 use SimpleSquid\LaravelVend\VendTokenManager;
 
-class VendOauthController
+class VendOauthResetController
 {
     public function __invoke(VendTokenManager $tokenManager)
     {
         if ($tokenManager->hasToken()) {
-            return back();
+            $tokenManager->destroyToken();
         }
 
-        return redirect()->away(Vend::getAuthorisationUrl(url()->previous()));
+        return back();
     }
 }

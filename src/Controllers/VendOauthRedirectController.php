@@ -17,7 +17,7 @@ class VendOauthRedirectController
                  Response::HTTP_UNAUTHORIZED);
 
         if ($tokenManager->hasToken()) {
-            return redirect($request->state, Response::HTTP_SEE_OTHER);
+            return redirect($request->state);
         }
 
         try {
@@ -29,6 +29,6 @@ class VendOauthRedirectController
             abort(Response::HTTP_BAD_REQUEST);
         }
 
-        return redirect($request->state, Response::HTTP_SEE_OTHER);
+        return redirect($request->state);
     }
 }
