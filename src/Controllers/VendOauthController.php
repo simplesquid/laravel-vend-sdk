@@ -8,12 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class VendOauthController
 {
-    public function __invoke(VendTokenManager $tokenManager): Response
+    public function __invoke(VendTokenManager $tokenManager)
     {
         if ($tokenManager->hasToken()) {
             return redirect(url()->previous(), Response::HTTP_SEE_OTHER);
         }
 
-        return redirect(Vend::getAuthorisationUrl(url()->previous()), Response::HTTP_SEE_OTHER);
+        return redirect()->away(Vend::getAuthorisationUrl(url()->previous()), Response::HTTP_SEE_OTHER);
     }
 }
