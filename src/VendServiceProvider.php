@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use SimpleSquid\LaravelVend\Controllers\VendOauthController;
 use SimpleSquid\LaravelVend\Controllers\VendOauthRedirectController;
+use SimpleSquid\LaravelVend\Controllers\VendOauthResetController;
 use SimpleSquid\LaravelVend\Exceptions\RouteException;
 use SimpleSquid\LaravelVend\Exceptions\TokenManagerException;
 use SimpleSquid\Vend\Vend;
@@ -27,6 +28,7 @@ class VendServiceProvider extends ServiceProvider
             Route::name('vend.oauth.')->group(function () use ($url) {
                 Route::get($url, VendOauthController::class)->name('request');
                 Route::get("$url/redirect", VendOauthRedirectController::class)->name('redirect');
+                Route::get("$url/reset", VendOauthResetController::class)->name('reset');
             });
         });
 
