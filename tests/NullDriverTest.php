@@ -35,7 +35,7 @@ class NullDriverTest extends TestCase
         $log->shouldHaveReceived('debug', ['Called Vend facade method `whatever()` with:', []]);
         $log->shouldHaveReceived('debug', [
             'Called Vend facade method `product->create()` with:',
-            [['product_name' => 'A Product', 'sku' => '12345']]
+            [['product_name' => 'A Product', 'sku' => '12345']],
         ]);
     }
 
