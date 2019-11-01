@@ -1,15 +1,15 @@
 # Vend SDK (a Laravel Package)
-[![Latest Version](https://img.shields.io/github/release/simplesquid/laravel-vend-sdk.svg?style=flat-square)](https://github.com/simplesquid/laravel-vend-sdk/releases)
-[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/simplesquid/laravel-vend-sdk.svg?style=flat-square)](https://packagist.org/packages/simplesquid/laravel-vend-sdk)
+[![Build Status](https://img.shields.io/travis/simplesquid/laravel-vend-sdk/master.svg?style=flat-square)](https://travis-ci.org/simplesquid/laravel-vend-sdk)
+[![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/simplesquid/laravel-vend-sdk.svg?style=flat-square)](https://packagist.org/packages/simplesquid/laravel-vend-sdk)
 
-A Laravel provider package for [our PHP SDK for Vend POS](https://github.com/simplesquid/vend-sdk) | https://docs.vendhq.com/
-
-Contributions, issues and suggestions are very much welcome.
+A Laravel provider package for [our PHP SDK for Vend POS](https://github.com/simplesquid/vend-sdk).
 
 ## Installation
 
-To install the SDK in your project you need to require the package via composer:
+You can install this package via composer:
 
 ```bash
 composer require simplesquid/laravel-vend-sdk
@@ -23,13 +23,13 @@ To publish the config file to `config/vend.php` run:
 php artisan vendor:publish --provider="SimpleSquid\LaravelVend\VendServiceProvider"
 ```
 
-## OAuth Authorisation
+## OAuth Setup
 
-Should you wish to make use of the OAuth authorisation method, you will need to register your application on the [Vend Developer page](https://developers.vendhq.com/) and set the redirect URI to the value of `route('vend.oauth.request')`.
+Should you wish to make use of the OAuth authorisation method, you will need to register your application on the [Vend Developer page](https://developers.vendhq.com/) and set the redirect URI to the named route url, `vend.oauth.request`.
 
-You will then need to copy the client ID and secret to your environment variables. You will also need to create an implementation of `\SimpleSquid\LaravelVend\VendTokenManager` to store and retrieve the access token (it is recommended to be saved in your database).
+Then, copy the client ID and secret to your environment variables. You will also need to create an implementation of `\SimpleSquid\LaravelVend\VendTokenManager` to store and retrieve the access token (it is recommended to be saved in your database).
 
-Finally, direct your user to `route('vend.oauth.request')` in order to request access. The access token will be saved upon the user's successful return to your application, and they will be redirected to the previous page.
+Finally, direct your user to the named route, `vend.oauth.request`, in order to request access. The access token will be saved upon the user's successful return to your application, and they will be redirected to the previous page.
 
 ## Usage
 
@@ -41,17 +41,54 @@ use SimpleSquid\LaravelVend\Jobs\VendRequestJob;
 
 /* Get the list of products. */
 public function getProducts() {
+
     return VendRequestJob::dispatchNow(function () {
         return Vend::product()->get();
     });
+
 }
 
 /* Create a new product. */
 public function createProduct($product) {
+
     VendRequestJob::dispatch(function () use $product {
         return Vend::product()->create($product);
     });
+
 }
 ```
 
 For more examples, feel free to dive into the code.
+
+### Testing
+
+``` bash
+composer test
+```
+
+### Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+### Security
+
+If you discover any security related issues, please email security@simplesquid.co.za instead of using the issue tracker.
+
+## Credits
+
+- [Matthew Poulter](https://github.com/mdpoulter)
+- [All Contributors](../../contributors)
+
+Package skeleton based on [spatie/skeleton-php](https://github.com/spatie/skeleton-php).
+
+## About us
+
+SimpleSquid is a small web development and design company based in Cape Town, South Africa.
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

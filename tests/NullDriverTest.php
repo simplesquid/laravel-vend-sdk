@@ -1,6 +1,6 @@
 <?php
 
-namespace SimpleSquid\LaravelVend\Test;
+namespace SimpleSquid\LaravelVend\Tests;
 
 use Illuminate\Support\Facades\Log;
 use Mockery;
@@ -10,7 +10,7 @@ use SimpleSquid\LaravelVend\NullDriver;
 class NullDriverTest extends TestCase
 {
     /** @test */
-    public function it_can_call_with_any_method_or_field()
+    public function it_can_call_any_method_or_field()
     {
         $vend = new NullDriver();
 
