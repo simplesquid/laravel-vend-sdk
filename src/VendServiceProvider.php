@@ -48,7 +48,7 @@ class VendServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/vend.php', 'vend');
 
         throw_if(config('vend.oauth.token_manager') !== VendTokenManager::class &&
-                 !is_subclass_of(config('vend.oauth.token_manager'), VendTokenManager::class), TokenManagerException::class);
+                 ! is_subclass_of(config('vend.oauth.token_manager'), VendTokenManager::class), TokenManagerException::class);
 
         $this->app->bind(VendTokenManager::class, config('vend.oauth.token_manager'));
 
@@ -71,7 +71,7 @@ class VendServiceProvider extends ServiceProvider
                 $vend->domainPrefix(config('vend.personal.domain_prefix'))
                      ->personalAccessToken(config('vend.personal.access_token'));
             } elseif ($auth === 'oauth') {
-                throw_if(!route('vend.oauth.redirect'), RouteException::class);
+                throw_if(! route('vend.oauth.redirect'), RouteException::class);
 
                 $vend->clientId(config('vend.oauth.client_id'))
                      ->clientSecret(config('vend.oauth.client_secret'))

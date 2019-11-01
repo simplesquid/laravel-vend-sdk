@@ -13,7 +13,7 @@ class VendOauthRedirectController
     public function __invoke(Request $request, VendTokenManager $tokenManager)
     {
         abort_if($request->has('error') ||
-                 !$request->has(['domain_prefix', 'code', 'state']),
+                 ! $request->has(['domain_prefix', 'code', 'state']),
                  Response::HTTP_UNAUTHORIZED);
 
         if ($tokenManager->hasToken()) {
