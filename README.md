@@ -5,7 +5,7 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/simplesquid/laravel-vend-sdk.svg?style=flat-square)](https://packagist.org/packages/simplesquid/laravel-vend-sdk)
 
-A Laravel provider package for [our PHP SDK for Vend POS](https://github.com/simplesquid/vend-sdk).
+A Laravel package for our [PHP SDK for Vend POS](https://github.com/simplesquid/vend-sdk).
 
 ## Installation
 
