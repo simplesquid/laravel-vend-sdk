@@ -21,7 +21,7 @@
     ],
     "require": {
         "php": "^7.3",
-        "illuminate/support": "~5.8.0|~6.0.0",
+        "illuminate/support": "^6.0",
         "simplesquid/vend-sdk": "^0.4"
     },
     "require-dev": {
