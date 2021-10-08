@@ -1,7 +1,6 @@
 # Vend SDK (a Laravel Package)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/simplesquid/laravel-vend-sdk.svg?style=flat-square)](https://packagist.org/packages/simplesquid/laravel-vend-sdk)
-[![Build Status](https://img.shields.io/travis/simplesquid/laravel-vend-sdk/master.svg?style=flat-square)](https://travis-ci.org/simplesquid/laravel-vend-sdk)
 [![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/simplesquid/laravel-vend-sdk.svg?style=flat-square)](https://packagist.org/packages/simplesquid/laravel-vend-sdk)
 
